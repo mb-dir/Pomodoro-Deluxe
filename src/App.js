@@ -1,5 +1,9 @@
 import "./App.css";
 import React from "react";
+
+//components import
+import PomodoroSettings from "./components/PomodoroSettings/PomodoroSettings";
+
 function App() {
   //Default value - user will be able to change it via special component
   const [ studyTime, setStudyTime ] = React.useState(25);
@@ -15,6 +19,7 @@ function App() {
           number of sessions: {numberOfSessions}(total time of one session=
           {studyTime + breakTime} min)
         </p>
+        <PomodoroSettings />
       </div>
     </div>
   );
