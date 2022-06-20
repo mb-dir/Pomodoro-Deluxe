@@ -9,6 +9,18 @@ function App() {
   const [ studyTime, setStudyTime ] = React.useState(25);
   const [ breakTime, setBreakTime ] = React.useState(5);
   const [ numberOfSessions, setNumberOfSessions ] = React.useState(2);
+
+  //Functions for updating state related with setting
+  function updateStudyTime(newTime) {
+    setStudyTime(newTime);
+  }
+  function updateBreakTime(newTime) {
+    setBreakTime(newTime);
+  }
+  function updateNumberOfSessions(newAmmount) {
+    setNumberOfSessions(newAmmount);
+  }
+
   return (
     <div className="App">
       {/* In this moment I want to focus on bussines logic insted of css */}
