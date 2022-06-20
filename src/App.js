@@ -31,7 +31,14 @@ function App() {
           number of sessions: {numberOfSessions}(total time of one session=
           {studyTime + breakTime} min)
         </p>
-        <PomodoroSettings />
+        <PomodoroSettings
+          studyTime={studyTime}
+          breakTime={breakTime}
+          numberOfSessions={numberOfSessions}
+          updateStudyTime={updateStudyTime}
+          updateBreakTime={updateBreakTime}
+          updateNumberOfSessions={updateNumberOfSessions}
+        />
       </div>
     </div>
   );
