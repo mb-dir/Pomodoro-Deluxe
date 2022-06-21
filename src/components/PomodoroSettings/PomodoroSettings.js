@@ -12,8 +12,18 @@ function PomodoroSettings(defaultSettings) {
       return { ...prevSettings, [target.name]: [ target.value ] };
     });
   }
+
+  function saveSettings(e) {
+    e.preventDefault();
+
+    const { studyTime, breakTime, numberOfSessions } = setting;
+    //+ before each value cuz when it comes from inputs it is string so we need to change it to number
+    defaultSettings.updateStudyTime(+studyTime);
+    defaultSettings.updateBreakTime(+breakTime);
+    defaultSettings.updateNumberOfSessions(+numberOfSessions);
+  }
   return (
-    <form action="">
+    <form onSubmit={saveSettings} action="">
       <label htmlFor="studyTime">Set new study time</label>
       <input
         value={setting.studyTime}
