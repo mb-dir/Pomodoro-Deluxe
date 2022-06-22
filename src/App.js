@@ -3,6 +3,7 @@ import React from "react";
 
 //components import
 import PomodoroSettings from "./components/PomodoroSettings/PomodoroSettings";
+import PomodoroTimer from "./components/PomodoroTimer/PomodoroTimer";
 
 function App() {
   //Default value - user will be able to change it via special component
@@ -38,6 +39,11 @@ function App() {
           updateStudyTime={updateStudyTime}
           updateBreakTime={updateBreakTime}
           updateNumberOfSessions={updateNumberOfSessions}
+        />
+        <PomodoroTimer
+          studyTime={studyTime}
+          breakTime={breakTime}
+          numberOfSessions={numberOfSessions}
         />
       </div>
     </div>
