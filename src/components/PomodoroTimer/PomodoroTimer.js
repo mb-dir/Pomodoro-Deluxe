@@ -5,10 +5,25 @@ function PomodoroTimer(times) {
   function handleStartSession() {
     setStartSession(prev => !prev);
   }
+
+  //Convert to seconds
+  const [ studyTimeLeft, setStudyTimeLeft ] = React.useState(
+    times.studyTime * 60
+  );
+  React.useEffect(
+    () => {
+      if (startSession) {
+        setTimeout(() => {
+          setStudyTimeLeft(prev => prev - 1);
+        }, 1000);
+      }
+    },
+    [ startSession, studyTimeLeft ]
+  );
   return (
     <div>
       <div>
-        <p>Study time</p>
+        <p>Study time: {studyTimeLeft}</p>
       </div>
 
       <div>
