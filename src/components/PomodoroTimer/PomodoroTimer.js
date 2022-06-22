@@ -12,10 +12,16 @@ function PomodoroTimer(times) {
   );
   React.useEffect(
     () => {
-      if (startSession) {
-        setTimeout(() => {
-          setStudyTimeLeft(prev => prev - 1);
-        }, 1000);
+      const studySession = () => {
+        setStudyTimeLeft(prev => prev - 1);
+      };
+      if (startSession && studyTimeLeft !== 0) {
+        setTimeout(studySession, 1000);
+      } else {
+        //When the time is over clear the timeout, and reset the states
+        clearTimeout(studySession);
+        setStartSession(false);
+        setStudyTimeLeft(times.studyTime * 60);
       }
     },
     [ startSession, studyTimeLeft ]
