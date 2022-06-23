@@ -1,10 +1,13 @@
 import React from "react";
 function PomodoroTimer(times) {
   const [ startStudySession, setStartStudySession ] = React.useState(false);
+  const [ startBreakSession, setStartBreakSession ] = React.useState(false);
   const [ studyTime, setStudyTime ] = React.useState(0);
+  const [ breakTime, setBreakTime ] = React.useState(0);
   //After clicking the btn block the possibility to click it again until the current session ends
   function handleStartSession() {
     setStartStudySession(true);
+    setStartBreakSession(true);
   }
   React.useEffect(
     () => {
@@ -18,9 +21,30 @@ function PomodoroTimer(times) {
         clearTimeout(studySession);
         setStudyTime(0);
         setStartStudySession(false);
+        setStartBreakSession(true);
       }
     },
     [ startStudySession, studyTime ]
+  );
+
+  React.useEffect(
+    () => {
+      const breakSession = () => {
+        setBreakTime(prev => prev + 1);
+      };
+      if (
+        startBreakSession &&
+        breakTime !== times.breakTime * 60 &&
+        startStudySession !== true
+      ) {
+        setTimeout(breakSession, 1000);
+      } else {
+        clearTimeout(breakSession);
+        setBreakTime(0);
+        setStartBreakSession(false);
+      }
+    },
+    [ startBreakSession, breakTime ]
   );
   return (
     <div>
@@ -29,7 +53,7 @@ function PomodoroTimer(times) {
       </div>
 
       <div>
-        <p>Break time</p>
+        <p>Break time: {convertToMin(times.breakTime * 60 - breakTime)}</p>
       </div>
 
       <div>
