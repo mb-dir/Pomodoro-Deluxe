@@ -10,6 +10,8 @@ function App() {
   const [ studyTime, setStudyTime ] = React.useState(25);
   const [ breakTime, setBreakTime ] = React.useState(5);
   const [ numberOfSessions, setNumberOfSessions ] = React.useState(2);
+  //This state is updated by PomodoroTimer(if it is durring the session it is true), and passed ti PomodoroSettings, thanks to which the user will not able to change the setting durning the session
+  const [ isSessionActive, setIsSessionActive ] = React.useState(false);
 
   //Functions for updating state related with setting
   function updateStudyTime(newTime) {
@@ -20,6 +22,9 @@ function App() {
   }
   function updateNumberOfSessions(newAmmount) {
     setNumberOfSessions(newAmmount);
+  }
+  function updateIsSessionActive(isActive) {
+    setIsSessionActive(isActive);
   }
 
   return (
