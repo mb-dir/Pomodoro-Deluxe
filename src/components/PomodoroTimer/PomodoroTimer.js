@@ -4,8 +4,10 @@ function PomodoroTimer(times) {
   const [ startBreakSession, setStartBreakSession ] = React.useState(false);
   const [ studyTime, setStudyTime ] = React.useState(0);
   const [ breakTime, setBreakTime ] = React.useState(0);
+  const [ sessionNumber, setSessionNumber ] = React.useState(0);
   //After clicking the btn block the possibility to click it again until the current session ends
   function handleStartSession() {
+    setSessionNumber(0);
     setStartStudySession(true);
     setStartBreakSession(true);
   }
@@ -14,7 +16,11 @@ function PomodoroTimer(times) {
       const studySession = () => {
         setStudyTime(prev => prev + 1);
       };
-      if (startStudySession && studyTime !== times.studyTime * 60) {
+      if (
+        startStudySession &&
+        studyTime !== times.studyTime * 60 &&
+        sessionNumber !== times.numberOfSessions
+      ) {
         setTimeout(studySession, 1000);
       } else {
         //When the time is over clear the timeout, and reset the states
@@ -38,9 +44,12 @@ function PomodoroTimer(times) {
         startStudySession !== true
       ) {
         setTimeout(breakSession, 1000);
+      } else if (breakTime === times.breakTime * 60) {
+        setSessionNumber(prev => prev + 1);
+        setStartStudySession(true);
+        setBreakTime(0);
       } else {
         clearTimeout(breakSession);
-        setBreakTime(0);
         setStartBreakSession(false);
       }
     },
@@ -57,7 +66,7 @@ function PomodoroTimer(times) {
       </div>
 
       <div>
-        <p>Sessions to end: </p>
+        <p>Sessions to end: {times.numberOfSessions - sessionNumber}</p>
       </div>
       <button
         onClick={handleStartSession}
