@@ -59,7 +59,10 @@ function PomodoroTimer(times) {
       <div>
         <p>Sessions to end: </p>
       </div>
-      <button onClick={handleStartSession} disabled={startStudySession}>
+      <button
+        onClick={handleStartSession}
+        disabled={startStudySession || startBreakSession}
+      >
         Start
       </button>
     </div>
