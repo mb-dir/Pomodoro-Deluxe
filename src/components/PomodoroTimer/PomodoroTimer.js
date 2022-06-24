@@ -16,6 +16,7 @@ function PomodoroTimer(times) {
       const studySession = () => {
         setStudyTime(prev => prev + 1);
       };
+      times.updateIsSessionActive(true);
       if (
         startStudySession &&
         studyTime !== times.studyTime * 60 &&
@@ -55,6 +56,9 @@ function PomodoroTimer(times) {
     },
     [ startBreakSession, breakTime ]
   );
+  if (startStudySession === startBreakSession) {
+    times.updateIsSessionActive(false);
+  }
   return (
     <div>
       <div>

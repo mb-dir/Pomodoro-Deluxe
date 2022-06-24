@@ -49,6 +49,7 @@ function App() {
           studyTime={studyTime}
           breakTime={breakTime}
           numberOfSessions={numberOfSessions}
+          updateIsSessionActive={updateIsSessionActive}
         />
       </div>
     </div>
