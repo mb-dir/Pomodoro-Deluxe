@@ -7,8 +7,8 @@ import PomodoroTimer from "./components/PomodoroTimer/PomodoroTimer";
 
 function App() {
   //Default value - user will be able to change it via special component
-  const [ studyTime, setStudyTime ] = React.useState(25);
-  const [ breakTime, setBreakTime ] = React.useState(5);
+  const [ studyTime, setStudyTime ] = React.useState(0.2);
+  const [ breakTime, setBreakTime ] = React.useState(0.1);
   const [ numberOfSessions, setNumberOfSessions ] = React.useState(2);
   //This state is updated by PomodoroTimer(if it is durring the session it is true), and passed ti PomodoroSettings, thanks to which the user will not able to change the setting durning the session
   const [ isSessionActive, setIsSessionActive ] = React.useState(false);

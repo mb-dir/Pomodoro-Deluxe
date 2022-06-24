@@ -27,9 +27,9 @@ function PomodoroSettings(defaultSettings) {
       <label htmlFor="studyTime">Set new study time</label>
       <input
         value={setting.studyTime}
-        min={15}
-        max={45}
-        step={1}
+        // min={15}
+        // max={45}
+        // step={1}
         type="number"
         name="studyTime"
         id="studyTime"
@@ -39,9 +39,9 @@ function PomodoroSettings(defaultSettings) {
       <label htmlFor="breakTime">Set new break time</label>
       <input
         value={setting.breakTime}
-        min={5}
-        max={15}
-        step={1}
+        // min={5}
+        // max={15}
+        // step={1}
         type="number"
         name="breakTime"
         id="breakTime"
@@ -51,9 +51,9 @@ function PomodoroSettings(defaultSettings) {
       <label htmlFor="numberOfSessions">Set new number of sessions</label>
       <input
         value={setting.numberOfSessions}
-        min={1}
-        max={5}
-        step={1}
+        // min={1}
+        // max={5}
+        // step={1}
         type="number"
         name="numberOfSessions"
         id="numberOfSessions"
