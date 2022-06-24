@@ -44,6 +44,7 @@ function App() {
           updateStudyTime={updateStudyTime}
           updateBreakTime={updateBreakTime}
           updateNumberOfSessions={updateNumberOfSessions}
+          isSessionActive={isSessionActive}
         />
         <PomodoroTimer
           studyTime={studyTime}
