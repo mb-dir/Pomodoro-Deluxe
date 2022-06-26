@@ -30,7 +30,7 @@ function PomodoroTimer(times) {
   return (
     <div>
       <div>
-        <p>Study time:</p>
+        <p>Study time: {convertToMin(times.studyTime - studyTime)}</p>
       </div>
 
       <div>
@@ -40,7 +40,9 @@ function PomodoroTimer(times) {
       <div>
         <p>Sessions to end:</p>
       </div>
-      <button>Start</button>
+      <button onClick={startSession} disabled={isStudyActive}>
+        Start
+      </button>
     </div>
   );
 }
