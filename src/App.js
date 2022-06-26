@@ -47,8 +47,9 @@ function App() {
           isSessionActive={isSessionActive}
         />
         <PomodoroTimer
-          studyTime={studyTime}
-          breakTime={breakTime}
+          //Pass it as a seconds not minutes
+          studyTime={studyTime * 60}
+          breakTime={breakTime * 60}
           numberOfSessions={numberOfSessions}
           updateIsSessionActive={updateIsSessionActive}
         />
