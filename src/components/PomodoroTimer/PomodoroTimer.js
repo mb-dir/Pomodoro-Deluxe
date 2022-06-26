@@ -1,5 +1,32 @@
 import React from "react";
 function PomodoroTimer(times) {
+  //Handler for starting the session
+  function startSession() {
+    setIsStudyActive(true);
+  }
+  //State for study session
+  const [ isStudyActive, setIsStudyActive ] = React.useState(false);
+  //It starts form 0 cuz the time left to the end of the session is calculated as times.studyTime(props(user settings)) - studyTime
+  const [ studyTime, setStudyTime ] = React.useState(0);
+
+  //For study session
+  React.useEffect(
+    () => {
+      const studySession = () => {
+        setStudyTime(prev => prev + 1);
+      };
+      //times.studyTime comes form props, and it depends on the settings of user(user sets thw time of study session)
+      if (isStudyActive && studyTime !== times.studyTime) {
+        setTimeout(studySession, 1000);
+      } else if (studyTime === times.studyTime) {
+        //Reset for study - when the study session os over restore everything to orginal state
+        clearTimeout(studySession);
+        setStudyTime(0);
+        setIsStudyActive(false);
+      }
+    },
+    [ isStudyActive, studyTime ]
+  );
   return (
     <div>
       <div>
