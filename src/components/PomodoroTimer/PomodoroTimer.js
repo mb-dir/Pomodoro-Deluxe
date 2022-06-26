@@ -14,6 +14,9 @@ function PomodoroTimer(times) {
   //It starts form 0 cuz the break time  is calculated as times.breakTime(props(user settings)) - breakTime(the same as for study session)
   const [ breakTime, setBreakTime ] = React.useState(0);
 
+  //Helps to determine how many sessions are left to the end
+  const [ sessionNumber, setSessionNumber ] = React.useState(0);
+
   //For study session
   React.useEffect(
     () => {
@@ -32,7 +35,7 @@ function PomodoroTimer(times) {
         setIsBreakActive(true);
       }
     },
-    [ isStudyActive, studyTime ]
+    [ isStudyActive, studyTime, sessionNumber ]
   );
 
   //For break session
@@ -48,9 +51,18 @@ function PomodoroTimer(times) {
         clearTimeout(breakSession);
         setBreakTime(0);
         setIsBreakActive(false);
+        //cuz math(assume that user sets the number of session to 2, sessionNumber starts form 0, so the first "iteration" sessionNumber is 0, the 2nd is 1, but that means there are 2 sessions, -1 must be included in order not to add an additional session)
+        if (times.numberOfSessions - 1 !== sessionNumber) {
+          setIsStudyActive(true);
+        }
+        setSessionNumber(prev => prev + 1);
+      }
+      if (isBreakActive === false && isStudyActive === false) {
+        setSessionNumber(0);
+        times.updateIsSessionActive(false);
       }
     },
-    [ isBreakActive, breakTime ]
+    [ isBreakActive, breakTime, sessionNumber ]
   );
 
   return (
@@ -64,7 +76,7 @@ function PomodoroTimer(times) {
       </div>
 
       <div>
-        <p>Sessions to end:</p>
+        <p>Sessions to end: {times.numberOfSessions - sessionNumber}</p>
       </div>
       <button onClick={startSession} disabled={isStudyActive}>
         Start
