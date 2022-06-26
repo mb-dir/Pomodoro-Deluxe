@@ -9,6 +9,11 @@ function PomodoroTimer(times) {
   //It starts form 0 cuz the time left to the end of the session is calculated as times.studyTime(props(user settings)) - studyTime
   const [ studyTime, setStudyTime ] = React.useState(0);
 
+  //State for study session
+  const [ isBreakActive, setIsBreakActive ] = React.useState(false);
+  //It starts form 0 cuz the break time  is calculated as times.breakTime(props(user settings)) - breakTime(the same as for study session)
+  const [ breakTime, setBreakTime ] = React.useState(0);
+
   //For study session
   React.useEffect(
     () => {
@@ -23,10 +28,31 @@ function PomodoroTimer(times) {
         clearTimeout(studySession);
         setStudyTime(0);
         setIsStudyActive(false);
+        //Start the break time
+        setIsBreakActive(true);
       }
     },
     [ isStudyActive, studyTime ]
   );
+
+  //For break session
+  React.useEffect(
+    () => {
+      const breakSession = () => {
+        setBreakTime(prev => prev + 1);
+      };
+      if (isBreakActive && breakTime !== times.breakTime) {
+        setTimeout(breakSession, 1000);
+      } else if (breakTime === times.breakTime) {
+        //Reset for break - when the brek is over reset everything to orginal state
+        clearTimeout(breakSession);
+        setBreakTime(0);
+        setIsBreakActive(false);
+      }
+    },
+    [ isBreakActive, breakTime ]
+  );
+
   return (
     <div>
       <div>
@@ -34,7 +60,7 @@ function PomodoroTimer(times) {
       </div>
 
       <div>
-        <p>Break time:</p>
+        <p>Break time: {convertToMin(times.breakTime - breakTime)}</p>
       </div>
 
       <div>
