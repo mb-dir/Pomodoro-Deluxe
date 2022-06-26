@@ -20,6 +20,8 @@ function PomodoroTimer(times) {
   //For study session
   React.useEffect(
     () => {
+      //This will block the possibility to change the setting durning the session is running
+      times.updateIsSessionActive(true);
       const studySession = () => {
         setStudyTime(prev => prev + 1);
       };
@@ -59,6 +61,7 @@ function PomodoroTimer(times) {
       }
       if (isBreakActive === false && isStudyActive === false) {
         setSessionNumber(0);
+        //When all the sessions are over change the state in App - based on this state the app blocks/allows to change the settings
         times.updateIsSessionActive(false);
       }
     },
