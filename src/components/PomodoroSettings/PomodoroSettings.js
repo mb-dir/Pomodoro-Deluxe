@@ -60,7 +60,9 @@ function PomodoroSettings(defaultSettings) {
         onChange={updateSettings}
       />
 
-      <button>Save new settings!</button>
+      <button disabled={defaultSettings.isSessionActive}>
+        Save new settings!
+      </button>
     </form>
   );
 }
