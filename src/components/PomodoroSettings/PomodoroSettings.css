@@ -35,3 +35,7 @@
 .settings__btn:hover {
   cursor: pointer;
 }
+.settings__btn:disabled {
+  opacity: .6;
+  cursor: auto;
+}

@@ -39,6 +39,10 @@
 .startSession:hover {
   cursor: pointer;
 }
+.startSession:disabled {
+  opacity: .6;
+  cursor: auto;
+}
 @media (min-width: 624px) {
   .timeWrapper {
     height: 300px;
