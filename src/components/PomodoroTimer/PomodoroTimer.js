@@ -1,4 +1,5 @@
 import React from "react";
+import "./PomodoroTimer.css";
 function PomodoroTimer(times) {
   //Handler for starting the session
   function startSession() {

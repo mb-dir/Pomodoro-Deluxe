@@ -1,0 +1,35 @@
+.timeWrapper {
+  width: 80%;
+  margin: 0 auto;
+  border: 3px solid #243c32;
+  border-top: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+.timeWrapper__box {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+.timeWrapper__box--border {
+  border-right: 3px solid #243c32;
+}
+.timeWrapper__time {
+  font-size: 20px;
+  margin: 0;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+@media (min-width: 624px) {
+  .timeWrapper {
+    height: 300px;
+  }
+  .timeWrapper__time {
+    font-size: 32px;
+  }
+}
