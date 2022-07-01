@@ -1,3 +1,4 @@
+import "./PomodoroSettings.css";
 import React from "react";
 function PomodoroSettings(defaultSettings) {
   //Used to controlled component(inputs in form)

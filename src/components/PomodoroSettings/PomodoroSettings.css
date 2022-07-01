@@ -1,0 +1,37 @@
+.settings {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 0;
+  border: 3px solid #243c32;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.settings__inputWrapper {
+  width: 100%;
+  margin: 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.settings__label {
+  margin-right: 5px;
+}
+.settings__input {
+  background-color: #f75f40;
+  border: none;
+  border-bottom: 2px solid #243c32;
+  text-align: center;
+}
+.settings__btn {
+  background-color: #f75f40;
+  color: #243c32;
+  font-weight: 600;
+  border: 2px solid #243c32;
+  margin-top: 5px;
+  padding: 5px 10px;
+}
+.settings__btn:hover {
+  cursor: pointer;
+}
