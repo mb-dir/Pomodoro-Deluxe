@@ -70,12 +70,18 @@ function PomodoroTimer(times) {
 
   return (
     <div>
-      <div>
-        <p>Study time: {convertToMin(times.studyTime - studyTime)}</p>
-      </div>
+      <div className="timeWrapper">
+        <div className="timeWrapper__box timeWrapper__box--border">
+          <p className="timeWrapper__time">
+            Study time: {convertToMin(times.studyTime - studyTime)}
+          </p>
+        </div>
 
-      <div>
-        <p>Break time: {convertToMin(times.breakTime - breakTime)}</p>
+        <div className="timeWrapper__box">
+          <p className="timeWrapper__time">
+            Break time: {convertToMin(times.breakTime - breakTime)}
+          </p>
+        </div>
       </div>
 
       <div>
