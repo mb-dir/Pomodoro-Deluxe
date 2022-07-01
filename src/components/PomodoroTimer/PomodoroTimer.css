@@ -25,6 +25,20 @@
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+.sessionInfo {
+  font-size: 20px;
+}
+.startSession {
+  background-color: #f75f40;
+  color: #243c32;
+  font-weight: 600;
+  border: 2px solid #243c32;
+  margin-bottom: 25px;
+  padding: 5px 10px;
+}
+.startSession:hover {
+  cursor: pointer;
+}
 @media (min-width: 624px) {
   .timeWrapper {
     height: 300px;
