@@ -1,5 +1,8 @@
 import React from "react";
 import "./PomodoroTimer.css";
+
+//https://github.com/goldfire/howler.js/ - sound lib - when the study session/break is over user will hear the sound effect
+import { Howl, Howler } from "howler";
 function PomodoroTimer(times) {
   //Handler for starting the session
   function startSession() {
@@ -114,6 +117,15 @@ function convertToMin(time) {
     timeToReturn = `${minutes}:${seconds}`;
   }
   return timeToReturn;
+}
+function playSound() {
+  ///https://github.com/goldfire/howler.js/
+  const sound = new Howl({
+    //random phone ring
+    src: [ "https://www.soundjay.com/phone/sounds/telephone-ring-03a.mp3" ],
+  });
+
+  sound.play();
 }
 
 export default PomodoroTimer;
