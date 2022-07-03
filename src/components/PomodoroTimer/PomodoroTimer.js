@@ -33,6 +33,8 @@ function PomodoroTimer(times) {
       if (isStudyActive && studyTime !== times.studyTime) {
         setTimeout(studySession, 1000);
       } else if (studyTime === times.studyTime) {
+        //Announce the end of once session by the phone ring
+        playSound();
         //Reset for study - when the study session os over restore everything to orginal state
         clearTimeout(studySession);
         setStudyTime(0);
@@ -53,6 +55,8 @@ function PomodoroTimer(times) {
       if (isBreakActive && breakTime !== times.breakTime) {
         setTimeout(breakSession, 1000);
       } else if (breakTime === times.breakTime) {
+        //Announce the end of once break by the phone ring
+        playSound();
         //Reset for break - when the brek is over reset everything to orginal state
         clearTimeout(breakSession);
         setBreakTime(0);
