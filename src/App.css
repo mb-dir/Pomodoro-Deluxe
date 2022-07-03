@@ -1,1 +1,15 @@
-
+.sessionSettings {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 0;
+  border: 3px solid #243c32;
+  border-bottom: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.sessionSettings__setting {
+  width: 100%;
+  margin: 2px;
+}

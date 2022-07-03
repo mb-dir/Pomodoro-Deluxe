@@ -1,4 +1,5 @@
 import React from "react";
+import "./PomodoroTimer.css";
 function PomodoroTimer(times) {
   //Handler for starting the session
   function startSession() {
@@ -70,18 +71,30 @@ function PomodoroTimer(times) {
 
   return (
     <div>
-      <div>
-        <p>Study time: {convertToMin(times.studyTime - studyTime)}</p>
+      <div className="timeWrapper">
+        <div className="timeWrapper__box timeWrapper__box--border">
+          <p className="timeWrapper__time">
+            Study time: {convertToMin(times.studyTime - studyTime)}
+          </p>
+        </div>
+
+        <div className="timeWrapper__box">
+          <p className="timeWrapper__time">
+            Break time: {convertToMin(times.breakTime - breakTime)}
+          </p>
+        </div>
       </div>
 
       <div>
-        <p>Break time: {convertToMin(times.breakTime - breakTime)}</p>
+        <p className="sessionInfo">
+          Sessions to end: {times.numberOfSessions - sessionNumber}
+        </p>
       </div>
-
-      <div>
-        <p>Sessions to end: {times.numberOfSessions - sessionNumber}</p>
-      </div>
-      <button onClick={startSession} disabled={isStudyActive || isBreakActive}>
+      <button
+        className="startSession"
+        onClick={startSession}
+        disabled={isStudyActive || isBreakActive}
+      >
         Start
       </button>
     </div>

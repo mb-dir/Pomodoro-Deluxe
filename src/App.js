@@ -30,30 +30,34 @@ function App() {
   return (
     <div className="App">
       {/* In this moment I want to focus on bussines logic insted of css */}
-      <div>
-        <p>current study time: {studyTime} min</p>
-        <p>current break time: {breakTime} min</p>
-        <p>
+      <div className="sessionSettings">
+        <p className="sessionSettings__setting">
+          current study time: {studyTime} min
+        </p>
+        <p className="sessionSettings__setting">
+          current break time: {breakTime} min
+        </p>
+        <p className="sessionSettings__setting">
           number of sessions: {numberOfSessions}(total time of one session=
           {studyTime + breakTime} min)
         </p>
-        <PomodoroSettings
-          studyTime={studyTime}
-          breakTime={breakTime}
-          numberOfSessions={numberOfSessions}
-          updateStudyTime={updateStudyTime}
-          updateBreakTime={updateBreakTime}
-          updateNumberOfSessions={updateNumberOfSessions}
-          isSessionActive={isSessionActive}
-        />
-        <PomodoroTimer
-          //Pass it as a seconds not minutes
-          studyTime={studyTime * 60}
-          breakTime={breakTime * 60}
-          numberOfSessions={numberOfSessions}
-          updateIsSessionActive={updateIsSessionActive}
-        />
       </div>
+      <PomodoroSettings
+        studyTime={studyTime}
+        breakTime={breakTime}
+        numberOfSessions={numberOfSessions}
+        updateStudyTime={updateStudyTime}
+        updateBreakTime={updateBreakTime}
+        updateNumberOfSessions={updateNumberOfSessions}
+        isSessionActive={isSessionActive}
+      />
+      <PomodoroTimer
+        //Pass it as a seconds not minutes
+        studyTime={studyTime * 60}
+        breakTime={breakTime * 60}
+        numberOfSessions={numberOfSessions}
+        updateIsSessionActive={updateIsSessionActive}
+      />
     </div>
   );
 }
