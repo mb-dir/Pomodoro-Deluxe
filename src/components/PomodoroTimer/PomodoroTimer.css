@@ -16,6 +16,9 @@
 .timeWrapper__box--border {
   border-right: 3px solid #243c32;
 }
+.timeWrapper__box--active {
+  color: #007243;
+}
 .timeWrapper__time {
   font-size: 20px;
   margin: 0;
