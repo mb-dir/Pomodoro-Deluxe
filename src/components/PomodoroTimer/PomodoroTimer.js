@@ -79,13 +79,21 @@ function PomodoroTimer(times) {
   return (
     <div>
       <div className="timeWrapper">
-        <div className="timeWrapper__box timeWrapper__box--border">
+        <div
+          className={`timeWrapper__box timeWrapper__box--border ${isStudyActive
+            ? "timeWrapper__box--active"
+            : ""}`}
+        >
           <p className="timeWrapper__time">
             Study time: {convertToMin(times.studyTime - studyTime)}
           </p>
         </div>
 
-        <div className="timeWrapper__box">
+        <div
+          className={`timeWrapper__box ${isBreakActive
+            ? "timeWrapper__box--active"
+            : ""}`}
+        >
           <p className="timeWrapper__time">
             Break time: {convertToMin(times.breakTime - breakTime)}
           </p>
