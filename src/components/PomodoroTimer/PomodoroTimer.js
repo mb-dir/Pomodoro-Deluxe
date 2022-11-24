@@ -1,6 +1,6 @@
 import React from "react";
 import "./PomodoroTimer.css";
-
+import convertToMin from "../helpers/convertToMin";
 import { Howl } from "howler";
 function PomodoroTimer({
   studyTimeSettings,
@@ -110,19 +110,6 @@ function PomodoroTimer({
   );
 }
 
-//Auxiliary funtions
-function convertToMin(time) {
-  const minutes = Math.floor(time / 60);
-  const seconds = time - minutes * 60;
-
-  let timeToReturn = null;
-  if (seconds < 10) {
-    timeToReturn = `${minutes}:0${seconds}`;
-  } else {
-    timeToReturn = `${minutes}:${seconds}`;
-  }
-  return timeToReturn;
-}
 function playSound() {
   ///https://github.com/goldfire/howler.js/
   const sound = new Howl({
