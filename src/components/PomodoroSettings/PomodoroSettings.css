@@ -19,13 +19,13 @@
   margin-right: 5px;
 }
 .settings__input {
-  background-color: #f75f40;
+  background-color: #f5f5dc;
   border: none;
   border-bottom: 2px solid #243c32;
   text-align: center;
 }
 .settings__btn {
-  background-color: #f75f40;
+  background-color: #f5f5dc;
   color: #243c32;
   font-weight: 600;
   border: 2px solid #243c32;
