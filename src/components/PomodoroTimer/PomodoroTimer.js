@@ -2,7 +2,12 @@ import React from "react";
 import "./PomodoroTimer.css";
 
 import { Howl } from "howler";
-function PomodoroTimer(times) {
+function PomodoroTimer({
+  studyTimeSettings,
+  breakTimeSettings,
+  numberOfSessions,
+  updateIsSessionActive,
+}) {
   function startSession() {
     setIsStudyActive(true);
   }
@@ -15,13 +20,13 @@ function PomodoroTimer(times) {
 
   React.useEffect(
     () => {
-      times.updateIsSessionActive(true);
+      updateIsSessionActive(true);
       const studySession = () => {
         setStudyTime(prev => prev + 1);
       };
-      if (isStudyActive && studyTime !== times.studyTime) {
+      if (isStudyActive && studyTime !== studyTimeSettings) {
         setTimeout(studySession, 1000);
-      } else if (studyTime === times.studyTime) {
+      } else if (studyTime === studyTimeSettings) {
         playSound();
         clearTimeout(studySession);
         setStudyTime(0);
@@ -29,7 +34,7 @@ function PomodoroTimer(times) {
         setIsBreakActive(true);
       }
     },
-    [ isStudyActive, studyTime, sessionNumber ]
+    [ isStudyActive, studyTime, studyTimeSettings, updateIsSessionActive ]
   );
 
   React.useEffect(
@@ -37,24 +42,32 @@ function PomodoroTimer(times) {
       const breakSession = () => {
         setBreakTime(prev => prev + 1);
       };
-      if (isBreakActive && breakTime !== times.breakTime) {
+      if (isBreakActive && breakTime !== breakTimeSettings) {
         setTimeout(breakSession, 1000);
-      } else if (breakTime === times.breakTime) {
+      } else if (breakTime === breakTimeSettings) {
         playSound();
         clearTimeout(breakSession);
         setBreakTime(0);
         setIsBreakActive(false);
-        if (times.numberOfSessions - 1 !== sessionNumber) {
+        if (numberOfSessions - 1 !== sessionNumber) {
           setIsStudyActive(true);
         }
         setSessionNumber(prev => prev + 1);
       }
       if (isBreakActive === false && isStudyActive === false) {
         setSessionNumber(0);
-        times.updateIsSessionActive(false);
+        updateIsSessionActive(false);
       }
     },
-    [ isBreakActive, breakTime, sessionNumber ]
+    [
+      isBreakActive,
+      breakTime,
+      sessionNumber,
+      breakTimeSettings,
+      isStudyActive,
+      numberOfSessions,
+      updateIsSessionActive,
+    ]
   );
 
   return (
@@ -66,7 +79,7 @@ function PomodoroTimer(times) {
             : ""}`}
         >
           <p className="timeWrapper__time">
-            Study time: {convertToMin(times.studyTime - studyTime)}
+            Study time: {convertToMin(studyTimeSettings - studyTime)}
           </p>
         </div>
 
@@ -76,14 +89,14 @@ function PomodoroTimer(times) {
             : ""}`}
         >
           <p className="timeWrapper__time">
-            Break time: {convertToMin(times.breakTime - breakTime)}
+            Break time: {convertToMin(breakTimeSettings - breakTime)}
           </p>
         </div>
       </div>
 
       <div>
         <p className="sessionInfo">
-          Sessions to end: {times.numberOfSessions - sessionNumber}
+          Sessions to end: {numberOfSessions - sessionNumber}
         </p>
       </div>
       <button

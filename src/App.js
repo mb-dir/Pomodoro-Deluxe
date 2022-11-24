@@ -4,8 +4,8 @@ import PomodoroSettings from "./components/PomodoroSettings/PomodoroSettings";
 import PomodoroTimer from "./components/PomodoroTimer/PomodoroTimer";
 
 function App() {
-  const [ studyTime, setStudyTime ] = React.useState(15);
-  const [ breakTime, setBreakTime ] = React.useState(5);
+  const [ studyTime, setStudyTime ] = React.useState(0.2);
+  const [ breakTime, setBreakTime ] = React.useState(0.1);
   const [ numberOfSessions, setNumberOfSessions ] = React.useState(2);
   const [ isSessionActive, setIsSessionActive ] = React.useState(false);
 
@@ -18,9 +18,9 @@ function App() {
   function updateNumberOfSessions(newAmmount) {
     setNumberOfSessions(newAmmount);
   }
-  function updateIsSessionActive(isActive) {
+  const updateIsSessionActive = React.useCallback(isActive => {
     setIsSessionActive(isActive);
-  }
+  }, []);
 
   return (
     <div className="App">
@@ -46,8 +46,8 @@ function App() {
         isSessionActive={isSessionActive}
       />
       <PomodoroTimer
-        studyTime={studyTime * 60}
-        breakTime={breakTime * 60}
+        studyTimeSettings={studyTime * 60}
+        breakTimeSettings={breakTime * 60}
         numberOfSessions={numberOfSessions}
         updateIsSessionActive={updateIsSessionActive}
       />
