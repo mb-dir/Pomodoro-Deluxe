@@ -1,9 +1,7 @@
 import "./PomodoroSettings.css";
 import React from "react";
 function PomodoroSettings(defaultSettings) {
-  //Used to controlled component(inputs in form)
   const [ setting, setSetting ] = React.useState({
-    //Default depends on default setting from App
     studyTime: defaultSettings.studyTime,
     breakTime: defaultSettings.breakTime,
     numberOfSessions: defaultSettings.numberOfSessions,
@@ -18,7 +16,6 @@ function PomodoroSettings(defaultSettings) {
     e.preventDefault();
 
     const { studyTime, breakTime, numberOfSessions } = setting;
-    //+ before each value cuz when it comes from inputs it is string so we need to change it to number
     defaultSettings.updateStudyTime(+studyTime);
     defaultSettings.updateBreakTime(+breakTime);
     defaultSettings.updateNumberOfSessions(+numberOfSessions);
