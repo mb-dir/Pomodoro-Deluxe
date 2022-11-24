@@ -1,7 +1,7 @@
 import React from "react";
 import "./PomodoroTimer.css";
 import convertToMin from "../helpers/convertToMin";
-import { Howl } from "howler";
+import playSound from "../helpers/playSound";
 function PomodoroTimer({
   studyTimeSettings,
   breakTimeSettings,
@@ -108,15 +108,6 @@ function PomodoroTimer({
       </button>
     </div>
   );
-}
-
-function playSound() {
-  ///https://github.com/goldfire/howler.js/
-  const sound = new Howl({
-    src: [ "https://www.soundjay.com/phone/sounds/telephone-ring-03a.mp3" ],
-  });
-
-  sound.play();
 }
 
 export default PomodoroTimer;
