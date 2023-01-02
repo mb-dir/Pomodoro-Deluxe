@@ -1,10 +1,18 @@
 import "./PomodoroSettings.css";
 import { useState } from "react";
-function PomodoroSettings(defaultSettings) {
+const PomodoroSettings = ({
+  studyTime,
+  breakTime,
+  numberOfSessions,
+  updateStudyTime,
+  updateBreakTime,
+  updateNumberOfSessions,
+  isSessionActive,
+}) => {
   const [ setting, setSetting ] = useState({
-    studyTime: defaultSettings.studyTime,
-    breakTime: defaultSettings.breakTime,
-    numberOfSessions: defaultSettings.numberOfSessions,
+    studyTime,
+    breakTime,
+    numberOfSessions,
   });
   function updateSettings({ target }) {
     setSetting(prevSettings => {
@@ -16,9 +24,9 @@ function PomodoroSettings(defaultSettings) {
     e.preventDefault();
 
     const { studyTime, breakTime, numberOfSessions } = setting;
-    defaultSettings.updateStudyTime(+studyTime);
-    defaultSettings.updateBreakTime(+breakTime);
-    defaultSettings.updateNumberOfSessions(+numberOfSessions);
+    updateStudyTime(+studyTime);
+    updateBreakTime(+breakTime);
+    updateNumberOfSessions(+numberOfSessions);
   }
   return (
     <form className="settings" onSubmit={saveSettings} action="">
@@ -73,14 +81,11 @@ function PomodoroSettings(defaultSettings) {
         />
       </div>
 
-      <button
-        className="settings__btn"
-        disabled={defaultSettings.isSessionActive}
-      >
+      <button className="settings__btn" disabled={isSessionActive}>
         Save new settings!
       </button>
     </form>
   );
-}
+};
 
 export default PomodoroSettings;

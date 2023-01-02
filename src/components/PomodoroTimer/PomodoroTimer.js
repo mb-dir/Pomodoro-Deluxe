@@ -2,15 +2,15 @@ import { useState, useEffect } from "react";
 import "./PomodoroTimer.css";
 import convertToMin from "../helpers/convertToMin";
 import playSound from "../helpers/playSound";
-function PomodoroTimer({
+const PomodoroTimer = ({
   studyTimeSettings,
   breakTimeSettings,
   numberOfSessions,
   updateIsSessionActive,
-}) {
-  function startSession() {
+}) => {
+  const startSession = () => {
     setIsStudyActive(true);
-  }
+  };
   const [ isStudyActive, setIsStudyActive ] = useState(false);
   const [ studyTime, setStudyTime ] = useState(0);
 
@@ -108,6 +108,6 @@ function PomodoroTimer({
       </button>
     </div>
   );
-}
+};
 
 export default PomodoroTimer;

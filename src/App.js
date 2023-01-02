@@ -4,20 +4,20 @@ import PomodoroSettings from "./components/PomodoroSettings/PomodoroSettings";
 import PomodoroTimer from "./components/PomodoroTimer/PomodoroTimer";
 
 function App() {
-  const [ studyTime, setStudyTime ] = useState(0.2);
-  const [ breakTime, setBreakTime ] = useState(0.1);
+  const [ studyTime, setStudyTime ] = useState(15);
+  const [ breakTime, setBreakTime ] = useState(5);
   const [ numberOfSessions, setNumberOfSessions ] = useState(2);
   const [ isSessionActive, setIsSessionActive ] = useState(false);
 
-  function updateStudyTime(newTime) {
+  const updateStudyTime = newTime => {
     setStudyTime(newTime);
-  }
-  function updateBreakTime(newTime) {
+  };
+  const updateBreakTime = newTime => {
     setBreakTime(newTime);
-  }
-  function updateNumberOfSessions(newAmmount) {
+  };
+  const updateNumberOfSessions = newAmmount => {
     setNumberOfSessions(newAmmount);
-  }
+  };
   const updateIsSessionActive = useCallback(isActive => {
     setIsSessionActive(isActive);
   }, []);
