@@ -1,7 +1,7 @@
 import "./PomodoroSettings.css";
-import React from "react";
+import { useState } from "react";
 function PomodoroSettings(defaultSettings) {
-  const [ setting, setSetting ] = React.useState({
+  const [ setting, setSetting ] = useState({
     studyTime: defaultSettings.studyTime,
     breakTime: defaultSettings.breakTime,
     numberOfSessions: defaultSettings.numberOfSessions,

@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import "./PomodoroTimer.css";
 import convertToMin from "../helpers/convertToMin";
 import playSound from "../helpers/playSound";
@@ -11,14 +11,14 @@ function PomodoroTimer({
   function startSession() {
     setIsStudyActive(true);
   }
-  const [ isStudyActive, setIsStudyActive ] = React.useState(false);
-  const [ studyTime, setStudyTime ] = React.useState(0);
+  const [ isStudyActive, setIsStudyActive ] = useState(false);
+  const [ studyTime, setStudyTime ] = useState(0);
 
-  const [ isBreakActive, setIsBreakActive ] = React.useState(false);
-  const [ breakTime, setBreakTime ] = React.useState(0);
-  const [ sessionNumber, setSessionNumber ] = React.useState(0);
+  const [ isBreakActive, setIsBreakActive ] = useState(false);
+  const [ breakTime, setBreakTime ] = useState(0);
+  const [ sessionNumber, setSessionNumber ] = useState(0);
 
-  React.useEffect(
+  useEffect(
     () => {
       updateIsSessionActive(true);
       const studySession = () => {
@@ -37,7 +37,7 @@ function PomodoroTimer({
     [ isStudyActive, studyTime, studyTimeSettings, updateIsSessionActive ]
   );
 
-  React.useEffect(
+  useEffect(
     () => {
       const breakSession = () => {
         setBreakTime(prev => prev + 1);
