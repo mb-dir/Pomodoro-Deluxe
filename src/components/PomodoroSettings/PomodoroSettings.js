@@ -14,20 +14,20 @@ const PomodoroSettings = ({
     breakTime,
     numberOfSessions,
   });
-  function updateSettings({ target }) {
+  const updateSettings = ({ target }) => {
     setSetting(prevSettings => {
       return { ...prevSettings, [target.name]: [ target.value ] };
     });
-  }
+  };
 
-  function saveSettings(e) {
+  const saveSettings = e => {
     e.preventDefault();
 
     const { studyTime, breakTime, numberOfSessions } = setting;
     updateStudyTime(+studyTime);
     updateBreakTime(+breakTime);
     updateNumberOfSessions(+numberOfSessions);
-  }
+  };
   return (
     <form className="settings" onSubmit={saveSettings} action="">
       <div className="settings__inputWrapper">

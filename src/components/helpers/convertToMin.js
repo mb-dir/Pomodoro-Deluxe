@@ -1,4 +1,4 @@
-export default function convertToMin(time) {
+export const convertToMin = time => {
   const minutes = Math.floor(time / 60);
   const seconds = time - minutes * 60;
 
@@ -9,4 +9,4 @@ export default function convertToMin(time) {
     timeToReturn = `${minutes}:${seconds}`;
   }
   return timeToReturn;
-}
+};

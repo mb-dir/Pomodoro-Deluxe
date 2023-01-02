@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./PomodoroTimer.css";
-import convertToMin from "../helpers/convertToMin";
+import { convertToMin } from "../helpers/convertToMin";
 import playSound from "../helpers/playSound";
 const PomodoroTimer = ({
   studyTimeSettings,
