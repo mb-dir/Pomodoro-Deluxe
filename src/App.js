@@ -1,24 +1,24 @@
 import "./App.css";
-import React from "react";
+import { useState, useCallback } from "react";
 import PomodoroSettings from "./components/PomodoroSettings/PomodoroSettings";
 import PomodoroTimer from "./components/PomodoroTimer/PomodoroTimer";
 
 function App() {
-  const [ studyTime, setStudyTime ] = React.useState(0.2);
-  const [ breakTime, setBreakTime ] = React.useState(0.1);
-  const [ numberOfSessions, setNumberOfSessions ] = React.useState(2);
-  const [ isSessionActive, setIsSessionActive ] = React.useState(false);
+  const [ studyTime, setStudyTime ] = useState(15);
+  const [ breakTime, setBreakTime ] = useState(5);
+  const [ numberOfSessions, setNumberOfSessions ] = useState(2);
+  const [ isSessionActive, setIsSessionActive ] = useState(false);
 
-  function updateStudyTime(newTime) {
+  const updateStudyTime = newTime => {
     setStudyTime(newTime);
-  }
-  function updateBreakTime(newTime) {
+  };
+  const updateBreakTime = newTime => {
     setBreakTime(newTime);
-  }
-  function updateNumberOfSessions(newAmmount) {
+  };
+  const updateNumberOfSessions = newAmmount => {
     setNumberOfSessions(newAmmount);
-  }
-  const updateIsSessionActive = React.useCallback(isActive => {
+  };
+  const updateIsSessionActive = useCallback(isActive => {
     setIsSessionActive(isActive);
   }, []);
 
